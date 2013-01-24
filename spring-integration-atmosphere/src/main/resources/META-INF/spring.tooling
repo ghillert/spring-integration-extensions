@@ -1,0 +1,4 @@
+# Tooling related information for the integration Atmosphere namespace
+http\://www.springframework.org/schema/integration/atmosphere@name=integration Atmosphere Namespace
+http\://www.springframework.org/schema/integration/atmosphere@prefix=int-atmosphere
+http\://www.springframework.org/schema/integration/atmosphere@icon=org/springframework/integration/config/xml/spring-integration-atmosphere.gif

@@ -1,0 +1,2 @@
+http\://www.springframework.org/schema/integration/atmosphere/spring-integration-atmosphere-0.5.xsd=org/springframework/integration/config/xml/spring-integration-atmosphere-0.5.xsd
+http\://www.springframework.org/schema/integration/atmosphere/spring-integration-atmosphere.xsd=org/springframework/integration/config/xml/spring-integration-atmosphere-0.5.xsd
