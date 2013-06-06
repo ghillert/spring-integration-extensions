@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd"
+         updateCheck="true" monitoring="autodetect"
+         dynamicConfig="true" name="TestCache"
+         >
+
+    <diskStore path="java.io.tmpdir"/>
+
+    <!--
+    Mandatory Default Cache configuration. These settings will be applied to caches
+    created programmtically using CacheManager.add(String cacheName).
+
+    The defaultCache has an implicit name "default" which is a reserved cache name.
+    -->
+    <defaultCache
+
+           eternal="false"
+           timeToIdleSeconds="1200"
+           timeToLiveSeconds="1200">
+    </defaultCache>
+
+    <cache name="mycache"
+     	   maxBytesLocalHeap="5m"
+           eternal="false"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="36000"
+           maxElementsOnDisk="100000"
+           statistics="true">
+    </cache>
+        <cache name="airports_cache"
+     	   maxBytesLocalHeap="5m"
+           eternal="false"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="36000"
+           maxElementsOnDisk="100000"
+           statistics="true">
+
+    </cache>
+    <cache name="customer"
+           maxBytesLocalHeap="5m"
+           eternal="false"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="36000"
+           maxElementsOnDisk="100000"
+           statistics="true">
+    </cache>
+        <cache name="usgsCache"
+           maxBytesLocalHeap="5m"
+           eternal="false"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="36000"
+           maxElementsOnDisk="100000"
+           statistics="true">
+    </cache>
+
+</ehcache>
+

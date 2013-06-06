@@ -1,0 +1,1 @@
+http\://www.springframework.org/schema/integration/ehcacheadapter=org.ehcache.siehcache.config.xml.EhcacheAdapterNamespaceHandler

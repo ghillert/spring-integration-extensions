@@ -1,0 +1,4 @@
+# Tooling related information for the integration EhcacheAdapter namespace
+http\://www.springframework.org/schema/integration/ehcacheadapter@name=integration EhcacheAdapter Namespace
+http\://www.springframework.org/schema/integration/ehcacheadapter@prefix=int-ehcacheadapter
+http\://www.springframework.org/schema/integration/ehcacheadapter@icon=org/springframework/integration/ehcacheadapter/config/xml/spring-integration-ehcacheadapter.gif
