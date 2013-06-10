@@ -1,1 +1,1 @@
-http\://www.springframework.org/schema/integration/ehcacheadapter=org.ehcache.siehcache.config.xml.EhcacheAdapterNamespaceHandler
+http\://www.springframework.org/schema/integration/cache=org.springframework.integration.cache.config.xml.CacheNamespaceHandler
