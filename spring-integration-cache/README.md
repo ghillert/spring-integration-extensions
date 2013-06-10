@@ -1,7 +1,7 @@
-Spring Integration Ehcache Outbound Gateway
+Spring Integration Cache Outbound Gateway
 =================================================
 
-Welcome to the Spring Integration Ehcache Outbound Gateway . This gateway is intended to give your app access to ehcache.  
+Welcome to the Spring Integration Caching Outbound Gateway . The purpose of this gateway is to access to JSR-107 caches and common caching  frameworks for your EIP based application.  
 
 # STS issues to be aware of
 
@@ -12,50 +12,39 @@ Welcome to the Spring Integration Ehcache Outbound Gateway . This gateway is int
 
 ## More to come...
 
-# Building
+# Context
 
-If you encounter out of memory errors during the build, increase available heap and permgen for Gradle:
+##Namespace and Schema Declaration
+Your XML Namespace will need to have the cache namespace as follows:
+xmlns:int-cache="http://www.springframework.org/schema/integration/cache"
+You will also need to include the Springs Caching framework in your xml schema for example (Note In the example below I included integration cache as well)
+http://www.springframework.org/schema/cache
+http://www.springframework.org/schema/cache/spring-cache.xsd
+http://www.springframework.org/schema/integration/cache
+http://www.springframework.org/schema/integration/cache/spring-integration-cache.xsd
 
-    GRADLE_OPTS='-XX:MaxPermSize=1024m -Xmx1024m'
+## Setting up the cache manager
 
-To build and install jars into your local Maven cache:
+You can use whatever cachemanager that is supported by Spring Caching framework.  Thus you can take advantage of JSR-107, Ehcache or the SimpleCacheManager.
+<!-- **************** Simple Cache Manager Example ********************* -->
+<bean id="simpleCacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+	<property name="caches">
+		<set>
+			<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" p:name="default"/>
+			<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" p:name="mycache"/>
+		</set>
+	</property>
+</bean>
 
-    ./gradlew install
+<!-- **************** Ehcache Manager Example ********************* -->
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" p:cache-manager-ref="ehcache"/>
 
-To build api Javadoc (results will be in `build/api`):
+<!-- Ehcache library setup -->
+	<bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:shared="true" p:config-location="classpath:ehcache.xml"/>
 
-    ./gradlew api
+## Setting up the Gateway
+<int-cache:outbound-gateway
+	id="defaultSettingGateway"
+	cache-name="mycache" auto-startup="true" order="1" request-channel="getDataOutputChannel" cache-manager-ref="cacheManager"
+	reply-channel="endChannel" reply-timeout="100" />
 
-To build reference documentation (results will be in `build/reference`):
-
-    ./gradlew reference
-
-To build complete distribution including `-dist`, `-docs`, and `-schema` zip files (results will be in `build/distributions`)
-
-    ./gradlew dist
-
-# Using SpringSource Tool Suite
-
-	Gradle projects can be directly imported into STS
-
-# Using PLain Eclipse
-
-To generate Eclipse metadata (.classpath and .project files), do the following:
-
-    ./gradlew eclipse
-
-Once complete, you may then import the projects into Eclipse as usual:
-
- *File -> Import -> Existing projects into workspace*
-
-Browse to the *'spring-integration'* root directory. All projects should import
-free of errors.
-
-# Using IntelliJ IDEA
-
-To generate IDEA metadata (.iml and .ipr files), do the following:
-
-    ./gradlew idea
-
-For more information, please visit the Spring Integration website at:
-[http://www.springsource.org/spring-integration](http://www.springsource.org/spring-integration)
