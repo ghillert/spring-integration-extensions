@@ -28,7 +28,7 @@ import org.springframework.util.Assert;
 /**
  *
  * @author Glenn Renfro
- * @since 1.0
+ * @since 0.5
  *
  */
 public class CacheOutboundGateway extends
